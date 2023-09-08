@@ -8,7 +8,8 @@
         ],
         "nohoist": [
             "recoil",
-            "recoil-nexus"
+            "recoil-nexus",
+            "react-native-paper"
         ]
     },
     "scripts": {

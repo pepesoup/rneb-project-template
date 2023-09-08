@@ -1,7 +1,7 @@
 {
     "compilerOptions": {
         "strict": true,
-        "jsx": "react",
+        "jsx": "react-jsx",
         "esModuleInterop": true,
         "allowSyntheticDefaultImports": true,
         "paths": {
@@ -12,5 +12,7 @@
         }
     },
     "extends": "expo/tsconfig.base",
-    "typeRoots": ["./types"]
+    "typeRoots": ["./types"],
+    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/**/*.ts", "**/**/*.tsx"],
+    "exclude": ["node_modules"]
 }

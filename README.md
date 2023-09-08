@@ -96,6 +96,14 @@ npx expo install --yarn
 
 # GIT
 
+## Start a new project
+
+git clone <this repo> --recursive
+
+if missed "--recursive", run this to populate submodules:
+
+git submodule update --init
+
 ## fetch new content from git submodules
 
 git submodule update --recursive --remote
