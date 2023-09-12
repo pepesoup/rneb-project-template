@@ -1,13 +1,16 @@
 // Learn more https://docs.expo.io/guides/customizing-metro
+/** @type {import('expo/metro-config').MetroConfig} */
+const { createMetroConfiguration } = require('expo-yarn-workspaces')
 const { getDefaultConfig } = require('expo/metro-config')
 
-/** @type {import('expo/metro-config').MetroConfig} */
-const config = getDefaultConfig(__dirname)
+const workspaceConfig = createMetroConfiguration(__dirname)
+const defaultConfig = getDefaultConfig(__dirname)
 
-config.resolver.assetExts.push('cjs')
+defaultConfig.resolver.sourceExts.push('cjs') /* for Firebase bundling */
+workspaceConfig.resolver.sourceExts.push('cjs') /* for Firebase bundling */
 
-module.exports = config
-
-const { createMetroConfiguration } = require('expo-yarn-workspaces')
-console.log('createMetroConfiguration', createMetroConfiguration(__dirname))
-module.exports = createMetroConfiguration(__dirname)
+/** Trying to get workspace-config to function - experimental...
+ *  Default-config seems to work
+ */
+module.exports = defaultConfig
+//module.exports = workspaceConfig

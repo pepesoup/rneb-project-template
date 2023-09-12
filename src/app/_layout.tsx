@@ -1,40 +1,27 @@
-import React, { Suspense, useEffect, useState } from 'react'
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context'
-import { RecoilRoot, useRecoilValue } from 'recoil'
-import RecoilNexus from 'recoil-nexus'
-import { PaperProvider, Text } from 'react-native-paper'
-import { Slot, Stack } from 'expo-router'
+import { MD3DarkTheme, PaperProvider } from 'react-native-paper'
+import { Slot } from 'expo-router'
+import { DataProvider } from '@rne-firebase/components/data/dataProvider/dataProvider'
+import { useAuthStoreBase } from '@rne-firebase/stores/authStore'
+import { StatusBar } from 'expo-status-bar'
 
 export default function App() {
-    useEffect(() => { }, [])
+    const theme = MD3DarkTheme
     return (
-        <RecoilRoot>
-            <RecoilNexus />
+        <PaperProvider theme={theme}>
             <SafeAreaProvider>
                 <SafeAreaView
                     style={{
                         flex: 1,
-                        backgroundColor: 'black',
+                        backgroundColor: theme.colors.background,
                     }}
                 >
-                    <Suspense>
-                        <PaperProvider>
-                            <Stack
-                                screenOptions={{
-                                    headerStyle: {
-                                        backgroundColor: 'yellow',
-                                    },
-                                    headerTintColor: 'white',
-                                    headerTitleStyle: {
-                                        fontWeight: "bold",
-                                    },
-                                    headerBackTitleVisible: false
-                                }}
-                            />
-                        </PaperProvider>
-                    </Suspense>
+                    <DataProvider stores={[useAuthStoreBase()]}>
+                        <StatusBar style="light" />
+                        <Slot />
+                    </DataProvider>
                 </SafeAreaView>
             </SafeAreaProvider>
-        </RecoilRoot>
+        </PaperProvider>
     )
 }
