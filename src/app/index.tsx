@@ -14,10 +14,10 @@ export default function Index_App() {
         setReady(!!navigation?.isReady)
     }, [navigation?.isReady])
 
-    if (ready) {
+    if (ready) { 
         //return <Redirect href={authData.isSignedIn ? '/(app)' : '/(auth)/login'} />
 
-        if (authData.isSignedIn) {
+        if (authData.isSignedIn) { 
             return (
                 <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', gap: 20 }}>
                     <Button onPress={() => authActions.signOut()}>SignOut</Button>
@@ -36,7 +36,7 @@ export default function Index_App() {
     } else {
         return (
             <Text style={{ color: 'pink' }} variant="titleLarge">
-                Index_App waiting to Render ...
+                TEMPLATE Index_App waiting to Render ...
             </Text>
         )
     }

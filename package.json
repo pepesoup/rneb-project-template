@@ -10,7 +10,8 @@
         "nohoist": [
             "@react-native-async-storage/async-storage",
             "react-native-paper",
-            "zustand"
+            "zustand",
+            "react-native-dotenv"
         ]
     },
     "scripts": {
